@@ -42,8 +42,9 @@ public class UserResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(UserModel user) {
         // create notification
-        List<UserModel> users = userService.create(user);
-        return Response.status(Status.CREATED).entity(users).build();
+        boolean resp = userService.create(user);
+        String message = resp?"Sucessful!!!":"Failed!";
+        return Response.status(Status.CREATED).entity(message).build();
     }
  
     @PUT
@@ -56,8 +57,11 @@ public class UserResource {
 
     @DELETE
     @Path("/user/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("id") long id) {
-        userService.delete(id);
-        return Response.status(202).entity("User deleted successfully !!").build();
+        boolean f = userService.delete(id);
+        String message = f?"User deleted successfully!!":"Can't delete users";
+        
+        return Response.status(202).entity(message).build();
     }
 }

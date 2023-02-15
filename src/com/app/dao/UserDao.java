@@ -146,4 +146,34 @@ public class UserDao {
 		
 		return user;
 	}
+	
+	public boolean deleteUserById(long id) {
+		boolean f = false;
+		
+		String query = "DELETE FROM users WHERE uid=?";
+		 
+		try (PreparedStatement pstmt = con.prepareStatement(query);){
+			pstmt.setLong(1,id);
+			f=pstmt.execute();
+			pstmt.close();
+					
+		}catch(Exception e) {
+			System.out.println("LoginDAO");
+			e.printStackTrace();
+		}
+		
+		String query2 = "DELETE FROM tasks WHERE fk_user=?";
+		
+		try (PreparedStatement pstmt = con.prepareStatement(query2);){
+			pstmt.setLong(1,id);
+			f=pstmt.execute();
+			pstmt.close();
+			
+		}catch(Exception e) {
+			System.out.println("LoginDAO");
+			e.printStackTrace();
+		}
+		
+		return f;
+	}
 }

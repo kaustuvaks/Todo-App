@@ -7,7 +7,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.app.entities.User;
 import com.app.entities.Task;
 
-@XmlRootElement
 public class UserModel extends User{
 	private long id;
 	private List<Task> taskList;
@@ -24,6 +23,10 @@ public class UserModel extends User{
 		super(id);
 		this.id = id;
 		this.taskList = taskList;
+	}
+	
+	public UserModel(String firstName, String lastName, String email,String password, String timestamp,String profile) {
+		super(firstName, lastName, email, password, timestamp);
 	}
 
 	//    private String name;

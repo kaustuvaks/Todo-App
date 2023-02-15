@@ -31,9 +31,12 @@ public class UserService {
          }
      }
 
-    public List<UserModel> create(UserModel user) {
-         users.add(user);
-         return users;
+    public boolean create(UserModel user) {
+    	boolean f = false; 
+    	UserDao dao = new UserDao(ConnectionProvider.getConnection());
+    	f = dao.saveUser(user);
+ 
+         return f;
     }
 
     public void update(long id,UserModel user) {
@@ -45,15 +48,10 @@ public class UserService {
          }
     }
 
-    public void delete(long id) throws NotFoundException {
+    public boolean  delete(long id) throws NotFoundException {
     	
-    	UserModel userX = null;
-    	boolean flag = true;
-    	for (UserModel user : users) {
-            if (user.getId() == id) {
-                userX = user;
-            }
-        }
-    	if(flag) users.remove(userX);
+    	UserDao dao = new UserDao(ConnectionProvider.getConnection());
+    	return dao.deleteUserById(id);
+    	
     }
 }
