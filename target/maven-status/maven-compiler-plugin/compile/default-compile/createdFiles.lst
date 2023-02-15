@@ -1,0 +1,16 @@
+com\app\entities\Message.class
+com\app\servlets\RegisterServlet.class
+com\app\entities\User.class
+com\app\core\BackgroundJobManager.class
+com\app\helper\SendMail$1.class
+com\app\servlets\taskServlet.class
+com\app\core\BackgroundJobManager$2.class
+com\app\helper\SendMail.class
+com\app\servlets\LogoutServlet.class
+com\app\servlets\LoginServlet.class
+com\app\core\BackgroundJobManager$1.class
+com\app\dao\TaskDao.class
+com\app\helper\ImageModifier.class
+com\app\dao\UserDao.class
+com\app\entities\Task.class
+com\app\helper\ConnectionProvider.class
